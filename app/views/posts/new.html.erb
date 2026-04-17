@@ -1,0 +1,22 @@
+<% content_for :title, "New post" %>
+
+<h1>New post</h1>
+
+<% if @post.errors.any? %>
+    <div style="color: red;">
+      <h2><%= pluralize(@post.errors.count, "error") %> prevented this post from being saved:</h2>
+      <ul>
+        <% @post.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+<%= render "form", post: @post %>
+
+<br>
+
+<div>
+  <%= link_to "Back to posts", posts_path %>
+</div>
